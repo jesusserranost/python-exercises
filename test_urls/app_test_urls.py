@@ -9,7 +9,7 @@ if Path(filename).is_file():
     rc = test_urls.test_urls(filename)
 
     if rc == 1:
-        print(f"There was {rc} inaccessible URL.\ACTION ITEM: Review the report above.", file=stderr)
+        print(f"There was {rc} inaccessible URL.\nACTION ITEM: Review the report above.", file=stderr)
     if rc > 1:
         print(f"There were {rc} inaccessible URLs.\nACTION ITEM: Review the report above.", file=stderr)
 

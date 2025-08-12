@@ -9,7 +9,9 @@ def test_urls(filename):
     line_number = 1
     error_count = 0
 
-    for web_address in fileinput.input(filename):
+    fi_object = fileinput.input(filename)
+
+    for web_address in fi_object:
         #print(f"{line_number}: {web_address}")
         request_url = request.Request(url = web_address, headers={'User-Agent': 'Mozilla/6.0'})
         try:
@@ -23,5 +25,7 @@ def test_urls(filename):
             error_count += 1
             print(f"FATAL ERROR {web_error.getcode()} {web_error.reason}) while accessing {web_address}", file=stderr)
         line_number += 1
+
+    fi_object.close()
 
     return error_count
